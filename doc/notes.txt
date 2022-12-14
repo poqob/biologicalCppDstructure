@@ -9,12 +9,17 @@ kök
 bir sol alt düğüm
 ... (bir sol alt düğüm yoksa)sağ kardeş düğüm
 
-
 postorder:
 sağ çocuk
 sol çocuk
 ebebyn
 
-
 levelorder:
-ov ye en sevdiğim
+
+--adımlar:
+bst çözümlendi
+avl çözümlendi
+radixsort incelenecek ~
+
+*levelorder() metodu gözden geçirilsin.
+*avl agacı gözden geçirilsin. -çevrimler
