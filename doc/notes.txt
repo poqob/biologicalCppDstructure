@@ -1,0 +1,20 @@
+inorder: 
+sol çocuk
+ebebyn
+sağ çocuk
+
+preorder:
+en kökten aşağı indiğimizde...
+kök 
+bir sol alt düğüm
+... (bir sol alt düğüm yoksa)sağ kardeş düğüm
+
+
+postorder:
+sağ çocuk
+sol çocuk
+ebebyn
+
+
+levelorder:
+ov ye en sevdiğim
