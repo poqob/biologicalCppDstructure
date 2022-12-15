@@ -62,6 +62,7 @@ her satırdaki her karakter ise bir organı temsil etmektedir.
 ekrana basılacak olan organın ikili arama ağacı dengeli ise ' ' (boşluk) dengesiz ise '#' karakteri yazılacaktır.
 denge kontorlü avl ağacındaki kontrole göre yapılmalıdır.
 
+Organizma:
 
 
 Mutasyon şartı:
@@ -83,14 +84,16 @@ mutasyona uğrayan organları-ağaçları, postorder okuyarak bir diziye atmak..
 
 
 
-
-
-
-
-
-
-
-
-
 kodalama notları:
 --işi biten bellek gölgesini anında iade etmek gerekmektedir okunması gereken veri oldukça fazladır.
+
+
+deneyimler:
+dosya yarım dakikadan daha kısa sürede okunup ekrana bastırıldı ?? 
+algoritma hazırlanıyor...
+
+alg:
+yukarıda not olarak düştüğümüz optimizasyonlara gerek yok diye düşünüyorum.
+mantıklı ve temiz bir kod 52.0000 satır verinin üstesinden gelecektir.
+txt belgesindeki verileri inegere çevirmek için algoritma oluşturulsun ve hız testleri yapılsın...
+sonuç:
