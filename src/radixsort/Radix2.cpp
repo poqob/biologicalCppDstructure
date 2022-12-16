@@ -1,16 +1,16 @@
-#include "../../include/radixsort/Radix.hpp"
+#include "../../include/radixsort/Radix2.hpp"
 
-int Radix::MaxStepNumber()
+int Radix2::MaxStepNumber()
 {
 	int max = 0;
 	for (int i = 0; i < length; i++)
 	{
-		if (StepCount(numbers[i]) > max)
-			max = StepCount(numbers[i]);
+		if (StepCount(cells[i].dnaLenght) > max)
+			max = StepCount(cells[i].dnaLenght);
 	}
 	return max;
 }
-int Radix::StepCount(int number)
+int Radix2::StepCount(int number)
 {
 	number = abs(number);
 	int basamak = 0;
@@ -21,22 +21,22 @@ int Radix::StepCount(int number)
 	}
 	return basamak;
 }
-Radix::Radix(int *numbers, int length)
+Radix2::Radix2(Cell *cells, int length)
 {
-	this->numbers = new int[length];
+	this->cells = new Cell[length];
 	this->length = length;
 	for (int i = 0; i < length; i++)
 	{
-		this->numbers[i] = numbers[i];
+		this->cells[i] = cells[i];
 	}
-	queues = new Queue *[10];
+	queues = new Queuetwo *[10];
 	for (int j = 0; j < 10; j++)
 	{
-		queues[j] = new Queue();
+		queues[j] = new Queuetwo();
 	}
 	maxStep = MaxStepNumber();
 }
-int *Radix::QueueCurrentLengths()
+int *Radix2::QueueCurrentLengths()
 {
 	int *lengths = new int[10];
 	for (int i = 0; i < 10; i++)
@@ -45,15 +45,15 @@ int *Radix::QueueCurrentLengths()
 	}
 	return lengths;
 }
-int *Radix::Sort()
+Cell *Radix2::Sort()
 {
 	int numberIndex = 0;
 	// read from array once and add to queues
 	for (; numberIndex < length; numberIndex++)
 	{
-		int stepValue = numbers[numberIndex] % 10;
-		int num = numbers[numberIndex];
-		queues[stepValue]->enqueue(num);
+		int stepValue = cells[numberIndex].dnaLenght % 10;
+		Cell cell = cells[numberIndex];
+		queues[stepValue]->enqueue(cell);
 	}
 
 	// i starting from 1 because of first digit processed
@@ -66,7 +66,7 @@ int *Radix::Sort()
 			int len = qlengths[index];
 			for (; len > 0; len--)
 			{
-				int number = queues[index]->peek();
+				int number = queues[index]->peek().dnaLenght;
 				queues[index]->dequeue();
 				int stepValue = (number / (int)pow(10, i)) % 10;
 				queues[stepValue]->enqueue(number);
@@ -74,23 +74,23 @@ int *Radix::Sort()
 		}
 		delete[] qlengths;
 	}
-	int *ordered = new int[length];
+	Cell *ordered = new Cell[length];
 	numberIndex = 0;
 	for (int index = 0; index < 10; index++)
 	{
 		while (!queues[index]->isEmpty())
 		{
-			int number = queues[index]->peek();
-			ordered[numberIndex++] = number;
+			int number = queues[index]->peek().dnaLenght;
+			ordered[numberIndex++].dnaLenght = number;
 			queues[index]->dequeue();
 		}
 	}
 
 	return ordered;
 }
-Radix::~Radix()
+Radix2::~Radix2()
 {
-	delete[] numbers;
+	delete[] cells;
 	for (int i = 0; i < 10; i++)
 		delete queues[i];
 	delete[] queues;

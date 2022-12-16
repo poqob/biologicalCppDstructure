@@ -3,16 +3,15 @@
 
 #include "Cell.hpp"
 #include "iostream"
-#include "../radixsort/Radix.hpp"
 using namespace std;
 class Tissue
 {
 private:
-    Cell *items;
     int capacity;
     void reserve(int newCapacity);
 
 public:
+    Cell *items;
     int length;
     Tissue(const Tissue &right);
     Tissue();

@@ -50,7 +50,8 @@
         "xutility": "cpp",
         "chrono": "cpp",
         "forward_list": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "charconv": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }

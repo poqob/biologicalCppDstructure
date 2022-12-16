@@ -1,18 +1,18 @@
-#include "../../include/radixsort/Queue.hpp"
+#include "../../include/radixsort/Queue2.hpp"
 
-void Queue::clear()
+void Queuetwo::clear()
 {
     front = 0;
     back = -1;
     length = 0;
 }
 
-void Queue::reserve(int newCapacity)
+void Queuetwo::reserve(int newCapacity)
 {
-    int *temp = new int[newCapacity];
+    Cell *temp = new Cell[newCapacity];
     for (int i = front, j = 0; j < length; j++)
     {
-        temp[j] = items[i];
+        temp[j].dnaLenght = items[i].dnaLenght;
         i = (i + 1) % capacity;
     }
     capacity = newCapacity;
@@ -22,34 +22,34 @@ void Queue::reserve(int newCapacity)
     back = length - 1;
 }
 
-Queue::Queue()
+Queuetwo::Queuetwo()
 {
     capacity = 1;
     front = 0;
     back = -1;
     length = 0;
-    items = new int[capacity];
+    items = new Cell[capacity];
 }
 
-int Queue::count() const
+int Queuetwo::count() const
 {
     return length;
 }
-bool Queue::isEmpty() const
+bool Queuetwo::isEmpty() const
 {
     if (length == 0)
         return true;
     return false;
 }
 
-const int &Queue::peek()
+const Cell &Queuetwo::peek()
 {
     if (isEmpty())
         throw "Empty List";
     return items[front];
 }
 
-void Queue::enqueue(const int &item)
+void Queuetwo::enqueue(const Cell &item)
 {
     if (length == capacity)
         reserve(2 * capacity);
@@ -58,7 +58,7 @@ void Queue::enqueue(const int &item)
     length++;
 }
 
-void Queue::dequeue()
+void Queuetwo::dequeue()
 {
     if (isEmpty())
         throw "Empty List";
@@ -66,7 +66,7 @@ void Queue::dequeue()
     length--;
 }
 
-Queue::~Queue()
+Queuetwo::~Queuetwo()
 {
     delete[] items;
 }

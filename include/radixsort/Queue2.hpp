@@ -1,25 +1,26 @@
-#ifndef QUEUE_HPP
-#define QUEUE_HPP
+#ifndef QUEUE2
+#define QUEUE2
 #include <iostream>
+#include "../Bio/Cell.hpp"
 using namespace std;
-class Queue
+class Queuetwo
 {
 private:
 	int front;
 	int back;
 	int capacity;
 	int length;
-	int *items;
+	Cell *items;
 	void reserve(int newCapacity);
 
 public:
-	Queue();
+	Queuetwo();
 	void clear();
 	int count() const;
 	bool isEmpty() const;
-	const int &peek();
-	void enqueue(const int &item);
+	const Cell &peek();
+	void enqueue(const Cell &item);
 	void dequeue();
-	~Queue();
+	~Queuetwo();
 };
 #endif
