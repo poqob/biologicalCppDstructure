@@ -1,10 +1,6 @@
 #ifndef ARRAYLIST_HPP
 #define ARRAYLIST_HPP
 
-#include "algorithm"
-#include "iostream"
-using namespace std;
-
 template <typename Object>
 class ArrayList
 {
@@ -32,7 +28,7 @@ public:
 		capacity = 0;
 		items = NULL;
 	}
-	ArrayList(const ArrayList &right)
+	ArrayList(const ArrayList &right) // Copy constructor
 	{
 		length = 0;
 		items = new Object[right->length()];
@@ -50,22 +46,22 @@ public:
 	{
 		return size() == 0;
 	}
-	int indexOf(const Object &item) const
+	int indexOf(const Object &item) const throw(NoSuchElement)
 	{
 		for (int i = 0; i < length; i++)
 		{
 			if (items[i] == item)
 				return i;
 		}
-		throw "No Such Element";
+		throw NoSuchElement("No Such Element");
 	}
-	const Object &elementAt(int i) const
+	const Object &elementAt(int i) const throw(NoSuchElement)
 	{
 		if (i < 0 || i >= length)
-			throw "No Such Element";
+			throw NoSuchElement("No Such Element");
 		return items[i];
 	}
-	void remove(const Object &item)
+	void remove(const Object &item) throw(NoSuchElement)
 	{
 		for (int i = 0; i < length; i++)
 		{
@@ -75,12 +71,12 @@ public:
 				return;
 			}
 		}
-		throw "No Such Element";
+		throw NoSuchElement("No Such Element");
 	}
-	void removeAt(int i)
+	void removeAt(int i) throw(NoSuchElement)
 	{
 		if (i < 0 || i >= length)
-			throw "No Such Element";
+			throw NoSuchElement("No Such Element");
 		for (int j = i + 1; j < length; j++)
 			items[j - 1] = items[j];
 		length--;
@@ -89,10 +85,10 @@ public:
 	{
 		insert(length, item);
 	}
-	void insert(int i, const Object &item)
+	void insert(int i, const Object &item) throw(IndexOutOfBound)
 	{
 		if (i < 0 || i > length)
-			throw "Index Out Of Bound";
+			throw IndexOutOfBound("Index Out Of Bound");
 		if (length >= capacity)
 			reserve(max(1, 2 * capacity));
 		for (int j = length - 1; j >= i; j--)
@@ -100,16 +96,16 @@ public:
 		items[i] = item;
 		length++;
 	}
-	const Object &first() const
+	const Object &first() const throw(EmptyList)
 	{
 		if (length == 0)
-			throw "List is empty";
+			throw EmptyList("List is empty");
 		return items[0];
 	}
-	const Object &last() const
+	const Object &last() const throw(EmptyList)
 	{
 		if (length == 0)
-			throw "List is empty";
+			throw EmptyList("List is empty");
 		return items[length - 1];
 	}
 	void clear()

@@ -1,6 +1,7 @@
 #include "BST.hpp"
 
-int main(){
+int main()
+{
 	BST<int> *bst = new BST<int>();
 	bst->Add(105);
 	bst->Add(67);
@@ -12,10 +13,14 @@ int main(){
 	bst->Add(546);
 	bst->Add(571);
 	bst->Add(320);
+
 	bst->postorder();
-	cout<<endl<<"Height: "<<bst->Height()<<endl;
-	if(bst->Search(95)) cout<<"Item found"<<endl;
-	else cout<<"Not found"<<endl;
+	cout << endl
+		 << "Height: " << bst->Height() << endl;
+	if (bst->Search(95))
+		cout << "Item found" << endl;
+	else
+		cout << "Not found" << endl;
 	delete bst;
 	return 0;
 }

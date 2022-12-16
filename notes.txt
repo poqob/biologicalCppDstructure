@@ -106,3 +106,5 @@ veriler.txt satır satır okunsun
 veriler.txt sayıları tek tek 
 veriler txtnin satırları radixsort ile k->b sıralanacaktır.
 bu satırın tam ortasındaki sayıyı organa atayacağız. 
+
+
