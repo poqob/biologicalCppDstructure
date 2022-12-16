@@ -1,6 +1,6 @@
 #include "../include/printthefile.hpp"
 #include <iostream>
-#include "../include/Timer.hpp"
+#include "../include/util/Timer.hpp"
 using namespace std;
 
 int main()

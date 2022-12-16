@@ -5,18 +5,20 @@
 #include "fstream"
 #include <cstdint>
 #include <cstring>
+#include "./dataStructures/arraylist/ArrayList.hpp"
 using namespace std;
 class printthefile
 {
 private:
 public:
     printthefile();
-
+    ArrayList<int> *a = new ArrayList<int>();
     int rowIntParser(string);
     int rowIntParser(string row, int firstSpaceLocc, int firstNumLocc);
     void print(int);
     void print(string);
     inline std::uint64_t parse_8_chars(const char *string) noexcept;
+    int intcounter = 0;
     ~printthefile();
 };
 
@@ -36,7 +38,13 @@ printthefile::printthefile()
             break;
     }
     cout << "\n"
-         << count << " row" << endl;
+         << count << " row readed. the size of array= " << a->size() << " \nthe intcounter value: " << intcounter << endl;
+
+    char b;
+    cin >> b;
+
+    cout << *a;
+
     read.close();
 }
 
@@ -83,6 +91,7 @@ int printthefile::rowIntParser(string row)
                 till = firstSpaceLoc - firstNumLoc + 1;
                 rowIntParser(row, firstSpaceLoc, firstSpaceLoc + 1);
                 print(stoi(row.substr(firstNumLoc, till)));
+                a->add(stoi(row.substr(firstNumLoc, till)));
                 return stoi(row.substr(firstNumLoc, till));
                 // print(parse_8_chars(row.substr(firstNumLoc, till).c_str()));
                 // return parse_8_chars(row.substr(firstNumLoc, till).c_str());
@@ -90,6 +99,7 @@ int printthefile::rowIntParser(string row)
             else
             {
                 print(stoi(row.substr(firstNumLoc, row.length() - firstNumLoc)));
+                a->add(stoi(row.substr(firstNumLoc, row.length() - firstNumLoc)));
                 return stoi(row.substr(firstNumLoc, row.length() - firstNumLoc));
                 // print(parse_8_chars(row.substr(firstNumLoc, row.length() - firstNumLoc).c_str()));
                 // return parse_8_chars(row.substr(firstNumLoc, row.length() - firstNumLoc).c_str());
@@ -119,6 +129,8 @@ int printthefile::rowIntParser(string row, int firstSpaceLocc, int firstNumLocc)
                 till = firstSpaceLoc - firstNumLoc + 1;
                 rowIntParser(row, firstSpaceLoc, firstSpaceLoc + 1);
                 print(stoi(row.substr(firstNumLoc, till)));
+                a->add(stoi(row.substr(firstNumLoc, till)));
+
                 return stoi(row.substr(firstNumLoc, till));
                 // print(parse_8_chars(row.substr(firstNumLoc, till).c_str()));
                 // return parse_8_chars(row.substr(firstNumLoc, till).c_str());
@@ -126,6 +138,7 @@ int printthefile::rowIntParser(string row, int firstSpaceLocc, int firstNumLocc)
             else
             {
                 print(stoi(row.substr(firstNumLoc, row.length() - firstNumLoc)));
+                a->add(stoi(row.substr(firstNumLoc, row.length() - firstNumLoc)));
                 return stoi(row.substr(firstNumLoc, row.length() - firstNumLoc));
                 // print(parse_8_chars(row.substr(firstNumLoc, row.length() - firstNumLoc).c_str()));
                 // return parse_8_chars(row.substr(firstNumLoc, row.length() - firstNumLoc).c_str());
@@ -142,6 +155,7 @@ int printthefile::rowIntParser(string row, int firstSpaceLocc, int firstNumLocc)
 void printthefile::print(int p)
 {
     // cout << p << " ";
+    intcounter++;
 }
 void printthefile::print(string p)
 {

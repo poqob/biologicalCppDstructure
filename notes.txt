@@ -32,11 +32,14 @@ hücre:
 
 metin belgesindeki her bir sayı bir hücreyi temsil etmektedir. 
 sayının değeri hücrenin dna'sının uzunluğudur.
-
 hücreler bir araya gelerek dokuyu oluşturmaktadır.
+
+hücre sınıfı int alanları.
 
 doku:
 her satır bir dokudur.
+dokuların hücrelerini arraylistlerde depoladım+
+radixsort'a arraylisti göndereceğim...
 her satır radixsort yöntemiyle küçükten büyüğe sıralanacaktır.
 
 sıralanmış satırların orta değeri organ sınıfının içinde bulunan ağaca gönderilecektir.
@@ -96,4 +99,10 @@ alg:
 yukarıda not olarak düştüğümüz optimizasyonlara gerek yok diye düşünüyorum.
 mantıklı ve temiz bir kod 52.0000 satır verinin üstesinden gelecektir.
 txt belgesindeki verileri inegere çevirmek için algoritma oluşturulsun ve hız testleri yapılsın...
+
 sonuç:
+
+veriler.txt satır satır okunsun
+veriler.txt sayıları tek tek 
+veriler txtnin satırları radixsort ile k->b sıralanacaktır.
+bu satırın tam ortasındaki sayıyı organa atayacağız. 
