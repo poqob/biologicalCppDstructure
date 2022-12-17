@@ -14,6 +14,7 @@ private:
 
 public:
     int length;
+    int median;
 
 public:
     Tissue *right = NULL;

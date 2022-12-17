@@ -4,6 +4,7 @@ Tissue::Tissue()
 {
     length = 0;
     capacity = 0;
+    median = 0;
     items = NULL;
 }
 
@@ -11,6 +12,7 @@ Tissue::Tissue(Tissue *rightB, Tissue *leftB)
 {
     length = 0;
     capacity = 0;
+    median = 0;
     items = NULL;
     right = rightB;
     left = leftB;
@@ -24,6 +26,7 @@ Tissue::Tissue(const Tissue &rightt, Tissue *rightB, Tissue *leftB)
         insert(i, rightt.items[i]);
     }
     capacity = length;
+    median = 0;
     right = rightB;
     left = leftB;
 }
@@ -36,6 +39,7 @@ Tissue::Tissue(const Tissue &right)
         insert(i, right.items[i]);
     }
     capacity = length;
+    median = 0;
 }
 Tissue::~Tissue()
 {
@@ -110,5 +114,6 @@ void Tissue::sort()
 
 int Tissue::calculateMedian()
 {
-    return items[(length / 2) + 1].dnaLenght;
+    median = items[(length / 2) + 1].dnaLenght;
+    return median;
 }
