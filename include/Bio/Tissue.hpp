@@ -13,7 +13,6 @@ private:
     void insert(int i, const Cell &item);
 
 public:
-    int median;
     int length;
 
 public:
@@ -32,7 +31,7 @@ public:
     void clear();
     void tissueWriter();
     void sort();
-    void calculateMedian();
+    int calculateMedian();
     ~Tissue(); // TODO
 };
 #endif // TISSUE

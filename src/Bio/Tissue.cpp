@@ -108,7 +108,7 @@ void Tissue::sort()
     calculateMedian();
 }
 
-void Tissue::calculateMedian()
+int Tissue::calculateMedian()
 {
-    median = items[(length / 2) + 1].dnaLenght;
+    return items[(length / 2) + 1].dnaLenght;
 }
