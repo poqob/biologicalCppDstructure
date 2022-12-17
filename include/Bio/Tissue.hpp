@@ -2,6 +2,7 @@
 #define TISSUE
 
 #include "Cell.hpp"
+#include "../radixsort/Radix2.hpp"
 #include "iostream"
 using namespace std;
 class Tissue
@@ -9,19 +10,29 @@ class Tissue
 private:
     int capacity;
     void reserve(int newCapacity);
+    void insert(int i, const Cell &item);
+
+public:
+    int median;
+    int length;
+
+public:
+    Tissue *right = NULL;
+    Tissue *left = NULL;
 
 public:
     Cell *items;
-    int length;
-    Tissue(const Tissue &right);
     Tissue();
+    Tissue(const Tissue &right);
+    Tissue(Tissue *rightB, Tissue *leftB);
+    Tissue(const Tissue &right, Tissue *rightB, Tissue *leftB);
     bool isEmpty() const;
     int size() const;
-    void insert(int i, const Cell &item);
     void add(const Cell &item);
     void clear();
     void tissueWriter();
     void sort();
+    void calculateMedian();
     ~Tissue(); // TODO
 };
 #endif // TISSUE

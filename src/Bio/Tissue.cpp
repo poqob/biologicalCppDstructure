@@ -7,6 +7,26 @@ Tissue::Tissue()
     items = NULL;
 }
 
+Tissue::Tissue(Tissue *rightB, Tissue *leftB)
+{
+    length = 0;
+    capacity = 0;
+    items = NULL;
+    right = rightB;
+    left = leftB;
+}
+Tissue::Tissue(const Tissue &rightt, Tissue *rightB, Tissue *leftB)
+{
+    length = 0;
+    items = new Cell[rightt.length];
+    for (int i = 0; i < rightt.size(); i++)
+    {
+        insert(i, rightt.items[i]);
+    }
+    capacity = length;
+    right = rightB;
+    left = leftB;
+}
 Tissue::Tissue(const Tissue &right)
 {
     length = 0;
@@ -47,6 +67,7 @@ void Tissue::insert(int i, const Cell &item)
 void Tissue::add(const Cell &item)
 {
     insert(length, item);
+    calculateMedian();
 }
 
 void Tissue::clear()
@@ -77,5 +98,17 @@ void Tissue::tissueWriter()
 
 void Tissue::sort()
 {
-    // Radix *radix = new Radix(items, length);
+    Radix2 *radix = new Radix2(items, length);
+    clear();
+    delete[] items;
+    length = radix->len();
+    capacity = length;
+    items = radix->Sort();
+    delete radix;
+    calculateMedian();
+}
+
+void Tissue::calculateMedian()
+{
+    median = items[(length / 2) + 1].dnaLenght;
 }
