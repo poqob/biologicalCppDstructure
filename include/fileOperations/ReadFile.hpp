@@ -10,7 +10,6 @@ class ReadFile
 private:
 public:
     ReadFile(int);
-    void rowIntParser(string);
     void rowIntParser(string row, int firstSpaceLocc, int firstNumLocc);
     Controll *controll = new Controll(); // TODO: Don't forget destructor.
     ~ReadFile();

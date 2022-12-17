@@ -6,7 +6,6 @@ class Cell
 public:
     // fields
     int dnaLenght;
-
     // Methods
     Cell(int);
     Cell();
