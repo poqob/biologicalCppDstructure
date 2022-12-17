@@ -14,31 +14,27 @@ int main()
     timer.start();
     // cells will be created after row reading.
     Tissue *t = new Tissue();
-    ReadFile *rf = new ReadFile(t, 2);
-    /*
+    Cell *c;
+    ReadFile *rf = new ReadFile(2);
+
     for (size_t i = 0; i < 20; i++)
     {
-        cell[i] = i;
-        t->add(cell[i]);
+        c = new Cell(i);
+        t->add(*c);
     }
-    t->add(Cell(5));
-    t->add(Cell(3));
-    */
-    t = rf->tissue;
-    cout << t->size() << endl
-         << " tissue: ";
+    c = new Cell(5);
+    t->add(*c);
+    c = new Cell(3);
+    t->add(*c);
+
     t->tissueWriter();
-
-    Radix2 *r = new Radix2(t->items, t->size());
-    Cell *sirali = r->Sort();
-
     cout << endl
-         << "ordered tissue(" << t->size() << "): ";
-    for (int i = 0; i < t->size(); i++)
-    {
-        cout << sirali[i].dnaLenght << " ";
-    }
-
+         << "median: " << t->median << endl;
+    t->sort();
+    cout << endl;
+    t->tissueWriter();
+    cout << endl
+         << "median: " << t->median << endl;
     timer.stop();
     cout << "\n"
          << timer.elapsedSeconds();

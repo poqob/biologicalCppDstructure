@@ -5,13 +5,11 @@ class Cell
 {
 public:
     // fields
-    int dnaLenght = 0;
+    int dnaLenght;
 
     // Methods
     Cell(int);
     Cell();
-
-    ~Cell(); // TODO
 };
 
 #endif // CELL

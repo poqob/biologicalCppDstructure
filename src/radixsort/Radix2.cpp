@@ -88,6 +88,11 @@ Cell *Radix2::Sort()
 
 	return ordered;
 }
+
+int Radix2::len()
+{
+	return length;
+}
 Radix2::~Radix2()
 {
 	delete[] cells;

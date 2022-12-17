@@ -34,13 +34,13 @@ void ReadFile::rowIntParser(string row, int firstSpaceLocc, int firstNumLocc)
                 till = firstSpaceLoc - firstNumLoc + 1;
                 rowIntParser(row, firstSpaceLoc, firstSpaceLoc + 1);
                 value = stoi(row.substr(firstNumLoc, till));
-                tissue->add(Cell(value)); // TODO: controll will replace tissue's place.
+                controll->send(value);
                 return;
             }
             else
             {
                 value = stoi(row.substr(firstNumLoc, row.length() - firstNumLoc));
-                tissue->add(Cell(value)); // TODO: controll will replace tissue's place.
+                controll->send(value);
                 return;
             }
 

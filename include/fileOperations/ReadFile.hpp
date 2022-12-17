@@ -12,7 +12,6 @@ public:
     ReadFile(int);
     void rowIntParser(string);
     void rowIntParser(string row, int firstSpaceLocc, int firstNumLocc);
-    int intcounter = 0;
     Controll *controll = new Controll(); // TODO: Don't forget destructor.
     ~ReadFile();
 };

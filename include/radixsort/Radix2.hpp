@@ -20,7 +20,7 @@ private:
 
 public:
 	Radix2(Cell *, int);
-
+	int len();
 	Cell *Sort();
 	~Radix2();
 };

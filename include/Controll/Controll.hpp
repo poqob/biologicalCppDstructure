@@ -6,17 +6,17 @@
 class Controll
 {
 private:
+    int counter = 0;
+
 public:
     Controll();
+    void send(int);
+    void createCell();
+    void createTissue();
+    void createOrgan();
+    void createSystem();
+    void createOrganism();
     ~Controll();
 };
-
-Controll::Controll()
-{
-}
-
-Controll::~Controll()
-{
-}
 
 #endif // CONTROLL

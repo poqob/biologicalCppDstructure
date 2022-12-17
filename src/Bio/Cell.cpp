@@ -8,7 +8,3 @@ Cell::Cell()
 {
     dnaLenght = 0;
 }
-
-Cell::~Cell()
-{
-}
