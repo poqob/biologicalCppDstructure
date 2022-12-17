@@ -10,8 +10,9 @@ compile:
 	g++ -I ./include/Bio -o ./lib/Tissue.o -c ./src/Bio/Tissue.cpp
 	g++ -I ./include/radixsort -o ./lib/Queue2.o -c ./src/radixsort/Queue2.cpp
 	g++ -I ./include/radixsort -o ./lib/Radix2.o -c ./src/radixsort/Radix2.cpp
+	g++ -I ./include/fileOperations -o ./lib/ReadFile.o -c ./src/fileOperations/ReadFile.cpp
 	g++ -c ./src/program.cpp -o ./lib/program.o
-	g++ ./lib/Cell.o ./lib/Organ.o ./lib/Organism.o ./lib/System.o ./lib/Tissue.o ./lib/Queue2.o  ./lib/Radix2.o ./lib/program.o  -o ./bin/program
+	g++ ./lib/Cell.o ./lib/Organ.o ./lib/Organism.o ./lib/System.o ./lib/Tissue.o ./lib/Queue2.o  ./lib/Radix2.o ./lib/ReadFile.o ./lib/program.o  -o ./bin/program
 
 run:
 	./bin/program
