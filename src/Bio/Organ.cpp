@@ -1,111 +1,111 @@
 #include "../../include/Bio/Organ.hpp"
 
 // PRIVATE METHODS
-void Organ::SearchAndAdd(Tissue *&subNode, const Tissue &newItem)
+void Organ::SearchAndAdd(Tissue *&sub, const Tissue &newItem)
 {
-    if (subNode == NULL)
-        subNode = new Tissue(newItem);
-    else if (newItem.median < subNode->calculateMedian())
-        SearchAndAdd(subNode->left, newItem);
-    else if (newItem.median > subNode->median)
-        SearchAndAdd(subNode->right, newItem);
+    if (sub == NULL)
+        sub = new Tissue(newItem);
+    else if (newItem.median < sub->calculateMedian())
+        SearchAndAdd(sub->left, newItem);
+    else if (newItem.median > sub->median)
+        SearchAndAdd(sub->right, newItem);
     else
-        SearchAndAdd(subNode->left, newItem);
+        SearchAndAdd(sub->left, newItem);
 }
-bool Organ::SearchAndDelete(Tissue *&subNode, const Tissue &data)
+bool Organ::SearchAndDelete(Tissue *&sub, const Tissue &data)
 {
-    if (subNode == NULL)
+    if (sub == NULL)
         return false;
-    if (subNode->median == data.median)
-        return DeleteNode(subNode);
-    else if (data.median < subNode->median)
-        return SearchAndDelete(subNode->left, data);
+    if (sub->median == data.median)
+        return DeleteTissue(sub);
+    else if (data.median < sub->median)
+        return SearchAndDelete(sub->left, data);
     else
-        return SearchAndDelete(subNode->right, data);
+        return SearchAndDelete(sub->right, data);
 }
-bool Organ::DeleteNode(Tissue *&subNode)
+bool Organ::DeleteTissue(Tissue *&sub)
 {
-    Tissue *DelNode = subNode;
+    Tissue *DelTissue = sub;
 
-    if (subNode->right == NULL)
-        subNode = subNode->left;
-    else if (subNode->left == NULL)
-        subNode = subNode->right;
+    if (sub->right == NULL)
+        sub = sub->left;
+    else if (sub->left == NULL)
+        sub = sub->right;
     else
     {
-        DelNode = subNode->left;
-        Tissue *parent = subNode;
-        while (DelNode->right != NULL)
+        DelTissue = sub->left;
+        Tissue *parent = sub;
+        while (DelTissue->right != NULL)
         {
-            parent = DelNode;
-            DelNode = DelNode->right;
+            parent = DelTissue;
+            DelTissue = DelTissue->right;
         }
-        subNode->median = DelNode->median;
-        if (parent == subNode)
-            subNode->left = DelNode->left;
+        sub->median = DelTissue->median;
+        if (parent == sub)
+            sub->left = DelTissue->left;
         else
-            parent->right = DelNode->left;
+            parent->right = DelTissue->left;
     }
-    delete DelNode;
+    delete DelTissue;
     return true;
 }
-void Organ::inorder(Tissue *subNode)
+void Organ::inorder(Tissue *sub)
 {
-    if (subNode != NULL)
+    if (sub != NULL)
     {
 
-        inorder(subNode->left);
-        cout << subNode->calculateMedian() << " ";
-        inorder(subNode->right);
+        inorder(sub->left);
+        cout << sub->calculateMedian() << " ";
+        inorder(sub->right);
     }
 }
-void Organ::preorder(Tissue *subNode)
+void Organ::preorder(Tissue *sub)
 {
-    if (subNode != NULL)
+    if (sub != NULL)
     {
-        cout << subNode->calculateMedian() << " ";
-        preorder(subNode->left);
-        preorder(subNode->right);
+        cout << sub->calculateMedian() << " ";
+        preorder(sub->left);
+        preorder(sub->right);
     }
 }
-void Organ::postorder(Tissue *subNode)
+void Organ::postorder(Tissue *sub)
 {
-    if (subNode != NULL)
+    if (sub != NULL)
     {
-        postorder(subNode->left);
-        postorder(subNode->right);
-        cout << subNode->calculateMedian() << " ";
+        postorder(sub->left);
+        postorder(sub->right);
+        cout << sub->calculateMedian() << " ";
     }
 }
 
-int Organ::Height(Tissue *subNode)
+int Organ::Height(Tissue *sub)
 {
-    if (subNode == NULL)
+    if (sub == NULL)
         return -1;
-    return 1 + max(Height(subNode->left), Height(subNode->right));
+    return 1 + max(Height(sub->left), Height(sub->right));
 }
-void Organ::PrintLevel(Tissue *subNode, int level)
+void Organ::PrintLevel(Tissue *sub, int level)
 {
-    if (subNode == NULL)
+    if (sub == NULL)
         return;
     if (level == 0)
-        cout << subNode->calculateMedian() << " ";
+        cout << sub->calculateMedian() << " ";
     else
     {
-        PrintLevel(subNode->left, level - 1);
-        PrintLevel(subNode->right, level - 1);
+        PrintLevel(sub->left, level - 1);
+        PrintLevel(sub->right, level - 1);
     }
 }
-bool Organ::Search(Tissue *subNode, const Tissue &item)
+bool Organ::Search(Tissue *sub, const Tissue &item)
 {
-    if (subNode == NULL)
+    if (sub == NULL)
         return false;
-    if (subNode->calculateMedian() == item.median)
+    if (sub->calculateMedian() == item.median)
         return true;
-    if (item.median < subNode->calculateMedian())
-        return Search(subNode->left, item);
+    if (item.median < sub->calculateMedian())
+        return Search(sub->left, item);
     else
-        return Search(subNode->right, item);
+        return Search(sub->right, item);
 }
 
 // PUBLIC METHODS
@@ -157,8 +157,33 @@ bool Organ::Search(const Tissue &item)
 void Organ::Clear()
 {
     while (!isEmpty())
-        DeleteNode(root);
+        DeleteTissue(root);
 }
+
+void Organ::balanceStatue(Tissue *od)
+{
+    while (od != NULL)
+    {
+        if (abs(Height(od->left) - Height(od->right)) > 1)
+        {
+            isTreeBalanced = false;
+            break;
+        }
+        else
+        {
+            balanceStatue(od->left);
+            balanceStatue(od->right);
+            break;
+        }
+    }
+}
+
+bool Organ::isTreeBalancedF()
+{
+    balanceStatue(root);
+    return isTreeBalanced;
+}
+
 Organ::~Organ()
 {
     Clear();
