@@ -1,10 +1,9 @@
 #include "../../include/fileOperations/ReadFile.hpp"
 
-ReadFile::ReadFile(Tissue *t, int stopRow = -1)
+ReadFile::ReadFile(int stopRow = -1)
 {
     string temp0;
     fstream read;
-    tissue = t;
     read.open("data/data.txt", ios::in);
 
     int count = 0;
@@ -35,13 +34,13 @@ void ReadFile::rowIntParser(string row, int firstSpaceLocc, int firstNumLocc)
                 till = firstSpaceLoc - firstNumLoc + 1;
                 rowIntParser(row, firstSpaceLoc, firstSpaceLoc + 1);
                 value = stoi(row.substr(firstNumLoc, till));
-                tissue->add(Cell(value));
+                tissue->add(Cell(value)); // TODO: controll will replace tissue's place.
                 return;
             }
             else
             {
                 value = stoi(row.substr(firstNumLoc, row.length() - firstNumLoc));
-                tissue->add(Cell(value));
+                tissue->add(Cell(value)); // TODO: controll will replace tissue's place.
                 return;
             }
 
@@ -56,4 +55,5 @@ void ReadFile::rowIntParser(string row, int firstSpaceLocc, int firstNumLocc)
 
 ReadFile::~ReadFile()
 {
+    delete controll;
 }

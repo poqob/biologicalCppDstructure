@@ -13,7 +13,6 @@ int main()
     Timer timer;
     timer.start();
     // cells will be created after row reading.
-    Cell *cell = new Cell[20];
     Tissue *t = new Tissue();
     ReadFile *rf = new ReadFile(t, 2);
     /*
