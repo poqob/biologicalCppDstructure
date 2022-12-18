@@ -13,13 +13,8 @@ int main()
 {
     Timer timer;
     timer.start();
-    // cells will be created after row reading.
-    Controll *controller = new Controll();
-    Tissue *t = new Tissue();
-    Organ *o = new Organ();
-    Cell *c;
-    // ReadFile *rf = new ReadFile(2, controller);
-
+    Controll *controller = new Controll(1);
+    ReadFile *rf = new ReadFile(41, controller);
     timer.stop();
     cout << "\n"
          << timer.elapsedSeconds();
