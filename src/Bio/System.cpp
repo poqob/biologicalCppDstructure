@@ -1,7 +1,8 @@
 #include "../../include/Bio/System.hpp"
 
-System::System()
+System::System(Organ *organs)
 {
+    cout << "test\n";
 }
 
 void System::mutation()
