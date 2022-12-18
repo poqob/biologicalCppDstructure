@@ -6,18 +6,16 @@ ReadFile::ReadFile(int stopRow, Controll *controller)
     fstream read;
     controll = controller;
     read.open("data/data.txt", ios::in);
-
+    this->stopRow = stopRow;
     int count = 0;
     while (getline(read, temp0))
     {
         rowIntParser(temp0, 0, 0);
-
-        // debug code
-        if (count == stopRow)
+        controll->nextRow();
+        if (count == stopRow && controller->debug_status())
             break;
         count++;
     }
-    controll->createOrganism();
     read.close();
 }
 
