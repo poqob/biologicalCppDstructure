@@ -114,6 +114,15 @@ void Tissue::sort()
 
 int Tissue::calculateMedian()
 {
-    median = items[(length / 2) + 1].dnaLenght;
+    median = items[(length / 2)].dnaLenght;
     return median;
+}
+
+void Tissue::mutation()
+{
+    for (int i = 0; i < length; i++)
+    {
+        items[i].mutation();
+    }
+    sort();
 }

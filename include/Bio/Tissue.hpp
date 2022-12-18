@@ -22,7 +22,10 @@ public:
 
 public:
     Cell *items;
+
+public:
     Tissue();
+    void mutation();
     Tissue(const Tissue &right);
     Tissue(Tissue *rightB, Tissue *leftB);
     Tissue(const Tissue &right, Tissue *rightB, Tissue *leftB);
