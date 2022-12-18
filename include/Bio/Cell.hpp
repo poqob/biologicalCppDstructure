@@ -9,6 +9,7 @@ public:
     // Methods
     Cell(int);
     Cell();
+    void mutation();
 };
 
 #endif // CELL

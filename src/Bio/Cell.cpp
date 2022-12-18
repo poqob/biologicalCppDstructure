@@ -8,3 +8,7 @@ Cell::Cell()
 {
     dnaLenght = 0;
 }
+void Cell::mutation()
+{
+    dnaLenght % 2 == 0 ? dnaLenght /= 2 : dnaLenght;
+}
