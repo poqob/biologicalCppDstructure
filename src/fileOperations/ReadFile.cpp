@@ -1,19 +1,23 @@
 #include "../../include/fileOperations/ReadFile.hpp"
 
-ReadFile::ReadFile(int stopRow = -1)
+ReadFile::ReadFile(int stopRow, Controll *controller)
 {
     string temp0;
     fstream read;
+    controll = controller;
     read.open("data/data.txt", ios::in);
 
     int count = 0;
     while (getline(read, temp0))
     {
         rowIntParser(temp0, 0, 0);
-        count++;
+
+        // debug code
         if (count == stopRow)
             break;
+        count++;
     }
+    controll->createOrganism();
     read.close();
 }
 
@@ -50,8 +54,6 @@ void ReadFile::rowIntParser(string row, int firstSpaceLocc, int firstNumLocc)
     {
     }
 }
-// TODO: we will create cells and send them to Controll class to have controll over them.
-// TODO: tissues will be added to organs; organs will be added to systems; system gonna added to organism and end.
 
 ReadFile::~ReadFile()
 {

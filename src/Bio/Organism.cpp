@@ -3,6 +3,9 @@
 Organism::Organism()
 {
 }
+void Organism::mutation()
+{
+}
 
 Organism::~Organism()
 {
