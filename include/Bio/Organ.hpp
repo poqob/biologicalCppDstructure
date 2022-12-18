@@ -22,6 +22,8 @@ private:
     // TODO: don't forget mutation status.
 private:
     Tissue *root;
+    int counter = -1;
+    Tissue *tissuesAfterMutation;
 
 private:
     void SearchAndAdd(Tissue *&subNode, const Tissue &newItem);
@@ -39,6 +41,7 @@ public:
 
 public:
     Organ();
+    void mutation();
     void balanceStatue(Tissue *);
     bool isEmpty() const;
     void Add(const Tissue &newItem);

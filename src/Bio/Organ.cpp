@@ -75,6 +75,7 @@ void Organ::postorder(Tissue *sub)
         postorder(sub->left);
         postorder(sub->right);
         cout << sub->calculateMedian() << " ";
+        tissuesAfterMutation[++counter] = *sub;
     }
 }
 
@@ -182,6 +183,14 @@ bool Organ::isTreeBalancedF()
 {
     balanceStatue(root);
     return isTreeBalanced;
+}
+
+void Organ::mutation()
+{
+    // TODO: if mutation will became true...
+    if (root->median % 50 == 0)
+    {
+    }
 }
 
 Organ::~Organ()
