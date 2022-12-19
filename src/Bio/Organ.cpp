@@ -114,6 +114,11 @@ Organ::Organ()
 {
     root = NULL;
 }
+Organ::Organ(Tissue *tissueRoot, Organ *next)
+{
+    this->next = next;
+    this->root = tissueRoot;
+}
 bool Organ::isEmpty() const
 {
     return root == NULL;

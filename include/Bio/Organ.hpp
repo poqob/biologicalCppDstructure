@@ -21,11 +21,12 @@ private:
     // TODO: delete unneccesary methods.
     // TODO: don't forget mutation status.
 private:
-    Tissue *root;
     int counter = -1;
     Tissue *tissuesAfterMutation;
 
-    Organ *right;
+public:
+    Organ *next;
+    Tissue *root;
 
 private:
     void SearchAndAdd(Tissue *&subNode, const Tissue &newItem);
@@ -43,6 +44,7 @@ public:
 
 public:
     Organ();
+    Organ(Tissue *, Organ *);
     void mutation();
     void balanceStatue(Tissue *);
     bool isEmpty() const;
