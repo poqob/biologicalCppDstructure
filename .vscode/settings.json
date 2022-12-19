@@ -51,7 +51,8 @@
         "chrono": "cpp",
         "forward_list": "cpp",
         "vector": "cpp",
-        "charconv": "cpp"
+        "charconv": "cpp",
+        "xtree": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }

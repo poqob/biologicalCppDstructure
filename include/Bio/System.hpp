@@ -4,18 +4,24 @@
 #include "Organ.hpp"
 class System
 {
-public:
-    Organ *organs;
-
-    int counter = 0; // it's provide us to manipulate same indexes simultaneousl organs and balances.
-    // eger bir organ mutasyona ugramissa hemen akabinde denge kontrolu yapılsın.
-    // agac dengesiz ise agacın denge durumu degistirilsin-bununla beraber agacın denge durumu ilgili agac indexindeki balances dengeler listesinde de degissin.
-    // TODO: every biological form of bio foolder will have mutation function.
-    // that function will call it's component's mutation function until it reaches to cell.
+private:
+    Organ *head;
+    Organ *FindPrevByPosition(int position);
 
 public:
-    System(Organ *);
-    void mutation(); // it will trigger sub biological form's mutation method.
+    System();
+    bool isEmpty() const;
+    int size() const;
+    Organ first();
+    Organ last();
+    void add(const Organ &item);
+    void insert(int index, const Organ &item);
+    void remove(const Organ &item);
+    void removeAt(int index);
+    bool find(const Organ &item) const;
+    int indexOf(const Organ &item);
+    friend ostream &operator<<(ostream &screen, System &right);
+    void clear();
     ~System();
 };
 
