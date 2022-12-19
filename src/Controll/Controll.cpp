@@ -105,16 +105,19 @@ void Controll::totalSystemCountSetter(int set)
     // debugPrinter("total system count: ", totalSystemCount);
 }
 
-void Controll::debugPrinterPhoto()
+void Controll::debugPrinterPhoto() // DEBUG
 {
     string s;
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 25; i++)
     {
-        for (int j = 0; j < 80; j++)
+        for (int j = 0; j < 99; j++)
         {
+            systems[i]->organs[j].isTreeBalancedF();
             s = systems[i]->organs[j].isTreeBalanced == 1 ? " " : "#";
             cout << s;
         }
         cout << endl;
     }
 }
+
+// TODO: we can't access system's organs. check arrays if you wont have any idea turn systems to a propper data structure.<-- i reccomend that.
