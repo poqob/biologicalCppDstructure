@@ -27,6 +27,7 @@ Tissue::Tissue(const Tissue &rightt, Tissue *rightB, Tissue *leftB)
     }
     capacity = length;
     median = 0;
+    sort();
     right = rightB;
     left = leftB;
 }
@@ -39,7 +40,7 @@ Tissue::Tissue(const Tissue &right)
         insert(i, right.items[i]);
     }
     capacity = length;
-    median = 0;
+    sort();
 }
 Tissue::~Tissue()
 {
@@ -71,7 +72,6 @@ void Tissue::insert(int i, const Cell &item)
 void Tissue::add(const Cell &item)
 {
     insert(length, item);
-    calculateMedian();
 }
 
 void Tissue::clear()
@@ -102,14 +102,18 @@ void Tissue::tissueWriter()
 
 void Tissue::sort()
 {
-    Radix2 *radix = new Radix2(items, length);
-    clear();
-    delete[] items;
-    length = radix->len();
-    capacity = length;
-    items = radix->Sort();
-    delete radix;
-    calculateMedian();
+    if (items != NULL)
+    {
+
+        Radix2 *radix = new Radix2(items, length);
+        clear();
+        delete[] items;
+        length = radix->len();
+        capacity = length;
+        items = radix->Sort();
+        delete radix;
+        calculateMedian();
+    }
 }
 
 int Tissue::calculateMedian()

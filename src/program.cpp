@@ -12,25 +12,16 @@ using namespace std;
 
 int main()
 {
-    Debug::change_debug_status(0); // 1 to debug mode, 0 to non debug mode.
+    // Debug::change_debug_status(1); // 1 to debug mode, 0 to non debug mode.
 
     Timer timer;
     timer.start();
     Controll *controller = new Controll();
-    ReadFile *rf = new ReadFile(2000, controller);
+    ReadFile *rf = new ReadFile(2001, controller);
 
-    for (int i = 0; i < 100; i++)
-    {
-        cout << "organ " << i << ": " << endl;
-        controller->organs[i]->inorder();
-        cout << endl;
-    }
-    /*
-    for (int i = 0; i < 100; i++)
-    {
-        string s = controller->organs[i]->isTreeBalanced == 1 ? " " : "*";
-        cout << s;
-    }*/
+    // Debug::debugPrinter("system size ", controller->systems[0].size());
+
+    // cout << "oraganism size: " << controller->organism->size() << endl;
 
     timer.stop();
     cout << "\n time elapsed: "

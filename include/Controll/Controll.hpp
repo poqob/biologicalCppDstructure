@@ -7,7 +7,7 @@
 using namespace std;
 class Controll
 {
-private:
+public:
     int cell_counter = -1;
     int tissue_counter = -1;
     int organ_counter = 0;

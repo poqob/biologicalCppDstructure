@@ -42,18 +42,23 @@ void Controll::createOrgan()
     organs[organ_counter] = tmpOrgan;
 
     // debugPrinter("\n organ balance status: ", tmpOrgan->isTreeBalanced == 1 ? " true" : "false");
-    Debug::debugPrinter("total organ count: ", organ_counter + 1);
+    // Debug::debugPrinter("total organ count: ", organ_counter + 1);
     organ_counter++;
     if (organ_counter == 100)
         createSystem();
 }
 void Controll::createSystem()
 {
-
-    if (systems == NULL)
-        systems = new System[totalSystemCount];
-    tmpSystem = new System(*organs);
-    systems[system_counter] = *tmpSystem;
+    // Debug::debugPrinter("im in ", 1);
+    if (organism == NULL)
+        organism = new Organism();
+    tmpSystem = new System();
+    for (int i = 0; i < 100; i++)
+    {
+        tmpSystem->add(*organs[i]);
+    }
+    organism->add(*tmpSystem); // TODO: hatali kisim burasi, organizmaya veri ekleme hatasi.
+    cout << organism->size();
     organ_counter = 0;
     tissue_counter = -1;
     system_counter++;
@@ -63,6 +68,7 @@ void Controll::createSystem()
 }
 void Controll::createOrganism()
 {
+
     // organism = new Organism(*systems);
     // organism->photo();
 }
