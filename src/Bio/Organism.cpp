@@ -15,7 +15,7 @@ void Organism::photo()
     {
         for (int j = 0; j < 80; j++)
         {
-            s = systems[i].organs[j].isTreeBalanced == 1 ? " " : "#";
+            // s = systems[i].organs[j].isTreeBalanced == 1 ? " " : "#";
             cout << s;
         }
         cout << endl;

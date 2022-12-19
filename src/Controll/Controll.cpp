@@ -1,8 +1,7 @@
 #include "../../include/Controll/Controll.hpp"
 
-Controll::Controll(bool debug = 0)
+Controll::Controll()
 {
-    debugMode = debug;
 }
 
 void Controll::send(int value)
@@ -43,17 +42,18 @@ void Controll::createOrgan()
     organs[organ_counter] = tmpOrgan;
 
     // debugPrinter("\n organ balance status: ", tmpOrgan->isTreeBalanced == 1 ? " true" : "false");
-    // debugPrinter("total organ count: ", organ_counter + 1);
+    Debug::debugPrinter("total organ count: ", organ_counter + 1);
     organ_counter++;
     if (organ_counter == 100)
         createSystem();
 }
 void Controll::createSystem()
 {
-    if (system_counter == 0)
-        systems = new System *[totalSystemCount];
+
+    if (systems == NULL)
+        systems = new System[totalSystemCount];
     tmpSystem = new System(*organs);
-    systems[system_counter] = tmpSystem;
+    systems[system_counter] = *tmpSystem;
     organ_counter = 0;
     tissue_counter = -1;
     system_counter++;
@@ -63,61 +63,18 @@ void Controll::createSystem()
 }
 void Controll::createOrganism()
 {
-    organism = new Organism(*systems);
-    organism->photo();
+    // organism = new Organism(*systems);
+    // organism->photo();
 }
 
 Controll::~Controll()
 {
-}
-bool Controll::debug_status() { return debugMode; }
-void Controll::debugPrinter(string message, string str2)
-{
-    if (debugMode)
-    {
-        cout << endl
-             << message << str2 << endl;
-    }
-}
-void Controll::debugPrinter(string message, int str2)
-{
-    if (debugMode)
-    {
-        // tissues[tissue_counter]->tissueWriter();
-        cout << endl
-             << message << str2 << endl;
-    }
-}
-
-void Controll::debugPrinter(string message, void (*_func)())
-{
-    if (debugMode)
-    {
-        _func();
-        cout << endl
-             << message << endl;
-    }
 }
 
 void Controll::totalSystemCountSetter(int set)
 {
     totalSystemCount = set / 2000;
     // debugPrinter("total system count: ", totalSystemCount);
-}
-
-void Controll::debugPrinterPhoto() // DEBUG
-{
-    string s;
-    for (int i = 0; i < 25; i++)
-    {
-        for (int j = 0; j < 99; j++)
-        {
-            systems[i]->organs[j].isTreeBalancedF();
-            s = systems[i]->organs[j].isTreeBalanced == 1 ? " " : "#";
-            cout << s;
-        }
-        cout << endl;
-    }
 }
 
 // TODO: we can't access system's organs. check arrays if you wont have any idea turn systems to a propper data structure.<-- i reccomend that.

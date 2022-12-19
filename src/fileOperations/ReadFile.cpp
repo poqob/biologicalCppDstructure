@@ -13,13 +13,12 @@ ReadFile::ReadFile(int stopRow, Controll *controller)
     {
         rowIntParser(temp0, 0, 0);
         controll->nextRow();
-        if (count == stopRow - 1 && controller->debug_status())
+        if (count == stopRow - 1)
             break;
         count++;
     }
     read.close();
-    // controll->createOrganism();
-    controll->debugPrinterPhoto();
+    controll->createOrganism();
 }
 
 ReadFile::ReadFile(Controll *controller)
@@ -38,7 +37,6 @@ ReadFile::ReadFile(Controll *controller)
     }
     read.close();
     // controll->createOrganism();
-    controll->debugPrinterPhoto();
 }
 
 // int parsing

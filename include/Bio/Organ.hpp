@@ -25,6 +25,8 @@ private:
     int counter = -1;
     Tissue *tissuesAfterMutation;
 
+    Organ *right;
+
 private:
     void SearchAndAdd(Tissue *&subNode, const Tissue &newItem);
     bool SearchAndDelete(Tissue *&subNode, const Tissue &data);
