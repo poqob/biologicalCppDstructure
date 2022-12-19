@@ -57,13 +57,14 @@ void Controll::createSystem()
     organ_counter = 0;
     tissue_counter = -1;
     system_counter++;
-    debugPrinter("current system count: ", system_counter);
-    debugPrinter("organs[0] balance status: ", systems[system_counter - 1]->organs[0].isTreeBalanced);
+    // debugPrinter("current system count: ", system_counter);
+    // debugPrinter("organs[0] balance status: ", systems[system_counter - 1]->organs[0].isTreeBalanced);
     organs = new Organ *[100];
 }
 void Controll::createOrganism()
 {
-    cout << "zort";
+    organism = new Organism(*systems);
+    organism->photo();
 }
 
 Controll::~Controll()
@@ -102,4 +103,18 @@ void Controll::totalSystemCountSetter(int set)
 {
     totalSystemCount = set / 2000;
     // debugPrinter("total system count: ", totalSystemCount);
+}
+
+void Controll::debugPrinterPhoto()
+{
+    string s;
+    for (int i = 0; i < 10; i++)
+    {
+        for (int j = 0; j < 80; j++)
+        {
+            s = systems[i]->organs[j].isTreeBalanced == 1 ? " " : "#";
+            cout << s;
+        }
+        cout << endl;
+    }
 }

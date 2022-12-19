@@ -21,6 +21,7 @@ private:
     Tissue **tissues = new Tissue *[20];
     Organ **organs = new Organ *[100];
     System **systems;
+    Organism *organism;
 
 public:
     Controll(bool);
@@ -35,6 +36,7 @@ public:
     void debugPrinter(string, string);
     void debugPrinter(string, int);
     void debugPrinter(string, void (*func)());
+    void debugPrinterPhoto();
     ~Controll();
 };
 

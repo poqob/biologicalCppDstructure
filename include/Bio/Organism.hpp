@@ -5,12 +5,12 @@
 class Organism
 {
 private:
-    System **systems;
+    System *systems;
 
 public:
-    Organism();
-    void addSystem();
+    Organism(System *);
     void mutation();
+    void photo();
     ~Organism();
 };
 

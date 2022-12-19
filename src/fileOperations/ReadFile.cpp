@@ -18,6 +18,8 @@ ReadFile::ReadFile(int stopRow, Controll *controller)
         count++;
     }
     read.close();
+    // controll->createOrganism();
+    controll->debugPrinterPhoto();
 }
 
 ReadFile::ReadFile(Controll *controller)
@@ -35,6 +37,8 @@ ReadFile::ReadFile(Controll *controller)
         count++;
     }
     read.close();
+    // controll->createOrganism();
+    controll->debugPrinterPhoto();
 }
 
 // int parsing
