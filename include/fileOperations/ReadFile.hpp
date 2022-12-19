@@ -9,6 +9,7 @@ class ReadFile
 {
 private:
     int stopRow = -1;
+    int count = 0;
 
 public:
     ReadFile(int, Controll *);

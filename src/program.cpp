@@ -14,9 +14,9 @@ int main()
     Timer timer;
     timer.start();
     Controll *controller = new Controll(1);
-    ReadFile *rf = new ReadFile(85, controller);
+    ReadFile *rf = new ReadFile(2000, controller);
     timer.stop();
-    cout << "\n"
+    cout << "\n time elapsed: "
          << timer.elapsedSeconds();
 
     return 0;

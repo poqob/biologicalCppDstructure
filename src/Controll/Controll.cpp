@@ -8,7 +8,9 @@ Controll::Controll(bool debug = 0)
 void Controll::send(int value)
 {
     if (cell_counter == -1)
+    {
         tmpTissue = new Tissue();
+    }
     cell_counter++;
     tmpCell = new Cell(value);
     tmpTissue->add(*tmpCell);
@@ -22,17 +24,14 @@ void Controll::createTissue()
 {
     cell_counter = -1;
     tmpTissue->sort();
+    tissue_counter++; // starts with -1 increment makes it prev_val+1;
     tissues[tissue_counter] = tmpTissue;
-    tissue_counter++;
     // debugPrinter("tissue_counter: ", tissue_counter);
-    if (tissue_counter == 19)
+    if (tissue_counter == 19) // the counter started with value -1, so 20 next value is 18.
         createOrgan();
 }
 void Controll::createOrgan()
 {
-
-    // TODO: we are facing an error while creating organs.
-    // quick example: 100 row data generates 100/20 organs but in our example 95-97 row data generates organs.
 
     tmpOrgan = new Organ();
     for (int i = 0; i < tissue_counter; i++)
@@ -42,19 +41,19 @@ void Controll::createOrgan()
     tissue_counter = -1;
     tmpOrgan->isTreeBalancedF();
     organs[organ_counter] = tmpOrgan;
+
+    // debugPrinter("\n organ balance status: ", tmpOrgan->isTreeBalanced == 1 ? " true" : "false");
+    debugPrinter("total organ count: ", organ_counter + 1);
     organ_counter++;
-
-    debugPrinter("\n organ balance status: ", tmpOrgan->isTreeBalanced == 1 ? " true" : "false");
-    debugPrinter("total organ count: ", organ_counter);
-
-    if (organ_counter == 99)
+    if (organ_counter == 100)
         createSystem();
 }
 void Controll::createSystem()
 {
-    organ_counter = -1;
+    organ_counter = 0;
+    tissue_counter = -1;
     system_counter++;
-    cout << "system counter: " << system_counter << " \n";
+    debugPrinter("system count: ", system_counter);
 }
 void Controll::createOrganism()
 {

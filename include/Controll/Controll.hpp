@@ -10,9 +10,9 @@ class Controll
 private:
     bool debugMode = 0;
     int cell_counter = -1;
-    int tissue_counter = 0;
-    int organ_counter = -1;
-    int system_counter = -1;
+    int tissue_counter = -1;
+    int organ_counter = 0;
+    int system_counter = 0;
     Cell *tmpCell;
     Tissue *tmpTissue;
     Organ *tmpOrgan;

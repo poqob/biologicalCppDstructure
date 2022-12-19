@@ -7,12 +7,11 @@ ReadFile::ReadFile(int stopRow, Controll *controller)
     controll = controller;
     read.open("data/data.txt", ios::in);
     this->stopRow = stopRow;
-    int count = 0;
     while (getline(read, temp0))
     {
         rowIntParser(temp0, 0, 0);
         controll->nextRow();
-        if (count == stopRow && controller->debug_status())
+        if (count == stopRow - 1 && controller->debug_status())
             break;
         count++;
     }
