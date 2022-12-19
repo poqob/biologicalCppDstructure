@@ -43,17 +43,23 @@ void Controll::createOrgan()
     organs[organ_counter] = tmpOrgan;
 
     // debugPrinter("\n organ balance status: ", tmpOrgan->isTreeBalanced == 1 ? " true" : "false");
-    debugPrinter("total organ count: ", organ_counter + 1);
+    // debugPrinter("total organ count: ", organ_counter + 1);
     organ_counter++;
     if (organ_counter == 100)
         createSystem();
 }
 void Controll::createSystem()
 {
+    if (system_counter == 0)
+        systems = new System *[totalSystemCount];
+    tmpSystem = new System(*organs);
+    systems[system_counter] = tmpSystem;
     organ_counter = 0;
     tissue_counter = -1;
     system_counter++;
-    debugPrinter("system count: ", system_counter);
+    debugPrinter("current system count: ", system_counter);
+    debugPrinter("organs[0] balance status: ", systems[system_counter - 1]->organs[0].isTreeBalanced);
+    organs = new Organ *[100];
 }
 void Controll::createOrganism()
 {
@@ -90,4 +96,10 @@ void Controll::debugPrinter(string message, void (*_func)())
         cout << endl
              << message << endl;
     }
+}
+
+void Controll::totalSystemCountSetter(int set)
+{
+    totalSystemCount = set / 2000;
+    // debugPrinter("total system count: ", totalSystemCount);
 }

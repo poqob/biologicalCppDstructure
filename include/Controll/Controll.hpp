@@ -13,6 +13,7 @@ private:
     int tissue_counter = -1;
     int organ_counter = 0;
     int system_counter = 0;
+    int totalSystemCount = 0;
     Cell *tmpCell;
     Tissue *tmpTissue;
     Organ *tmpOrgan;
@@ -23,6 +24,7 @@ private:
 
 public:
     Controll(bool);
+    void totalSystemCountSetter(int);
     void send(int);
     void nextRow();
     void createTissue();

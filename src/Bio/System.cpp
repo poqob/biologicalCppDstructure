@@ -2,7 +2,7 @@
 
 System::System(Organ *organs)
 {
-    cout << "test\n";
+    this->organs = organs;
 }
 
 void System::mutation()
