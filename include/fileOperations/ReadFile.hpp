@@ -8,9 +8,9 @@ using namespace std;
 class ReadFile
 {
 private:
-    int stopRow = -1;
-    int count = 0;
-    int totalRowNumber = 0;
+    int stopRow;
+    int count;
+    int totalRowNumber;
 
 public:
     ReadFile(int, Controll *);

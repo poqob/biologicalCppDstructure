@@ -2,6 +2,11 @@
 
 ReadFile::ReadFile(int stopRow, Controll *controller)
 {
+    // attemting fields start values
+    count = 0;
+    totalRowNumber = 0;
+
+    // controller
     controll = controller;
     controll->totalSystemCountSetter(fileRowCounter());
     string temp0;
@@ -11,10 +16,11 @@ ReadFile::ReadFile(int stopRow, Controll *controller)
     this->stopRow = stopRow;
     while (getline(read, temp0))
     {
+        if (count == stopRow)
+            break;
         rowIntParser(temp0, 0, 0);
         controll->nextRow();
-        if (count == stopRow - 1)
-            break;
+
         count++;
     }
     read.close();
@@ -23,6 +29,12 @@ ReadFile::ReadFile(int stopRow, Controll *controller)
 
 ReadFile::ReadFile(Controll *controller)
 {
+    // attemting fields
+    this->stopRow = -1;
+    count = 0;
+    totalRowNumber = 0;
+
+    // controller
     controll = controller;
     controll->totalSystemCountSetter(fileRowCounter());
     string temp0;
@@ -36,7 +48,7 @@ ReadFile::ReadFile(Controll *controller)
         count++;
     }
     read.close();
-    // controll->createOrganism();
+    controll->createOrganism();
 }
 
 // int parsing
@@ -62,7 +74,7 @@ void ReadFile::rowIntParser(string row, int firstSpaceLocc, int firstNumLocc)
             else
             {
                 value = stoi(row.substr(firstNumLoc, row.length() - firstNumLoc));
-                controll->send(value);
+                controll->send(value); // sending values to controll class.
                 return;
             }
 
