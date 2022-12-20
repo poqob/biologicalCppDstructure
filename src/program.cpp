@@ -13,15 +13,11 @@ using namespace std;
 int main()
 {
     // Debug::change_debug_status(1); // 1 to debug mode, 0 to non debug mode.
-
+    Debug debug = Debug();
     Timer timer;
     timer.start();
     Controll *controller = new Controll();
     ReadFile *rf = new ReadFile(2001, controller);
-
-    // Debug::debugPrinter("system size ", controller->systems[0].size());
-
-    // cout << "oraganism size: " << controller->organism->size() << endl;
 
     timer.stop();
     cout << "\n time elapsed: "

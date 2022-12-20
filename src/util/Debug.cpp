@@ -1,5 +1,4 @@
 #include "../../include/util/Debug.hpp"
-bool Debug::debugMode = 0;
 bool Debug::debug_status() { return debugMode; }
 void Debug::change_debug_status(bool status) { debugMode = status; }
 void Debug::debugPrinter(string message, string str2)
