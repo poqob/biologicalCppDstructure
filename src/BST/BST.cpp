@@ -75,7 +75,7 @@ void Bst::postorder(Tissue *sub)
         postorder(sub->left);
         postorder(sub->right);
         cout << sub->calculateMedian() << " ";
-        tissuesAfterMutation[++counter] = *sub;
+        tissuesAfterMutation[++tissueCounter] = *sub;
     }
 }
 

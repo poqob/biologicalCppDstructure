@@ -4,7 +4,7 @@
 class Bst
 {
 private:
-    int counter = -1;
+    int tissueCounter = -1;
     Tissue *tissuesAfterMutation;
 
 public:
@@ -20,6 +20,7 @@ private:
     int Height(Tissue *subNode);
     void PrintLevel(Tissue *subNode, int level);
     bool Search(Tissue *subNode, const Tissue &item);
+    void balanceStatue(Tissue *);
 
 public:
     bool isTreeBalanced = true;
@@ -27,7 +28,6 @@ public:
 public:
     Bst();
     void mutation();
-    void balanceStatue(Tissue *);
     bool isEmpty() const;
     void Add(const Tissue &newItem);
     void Delete(const Tissue &data);
