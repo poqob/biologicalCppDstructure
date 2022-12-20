@@ -11,6 +11,8 @@ Organ::Organ(Bst *bst)
 
 Organ::Organ(Bst *bst, Organ *next)
 {
+    this->bst = bst;
+    this->next = next;
 }
 Organ::~Organ()
 {

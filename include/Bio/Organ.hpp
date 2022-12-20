@@ -1,11 +1,9 @@
 #if !defined(ORGAN)
 #define ORGAN
-
 #include "../BST/BST.hpp"
 #include "Tissue.hpp"
 class Organ
 {
-
 public:
     Bst *bst;
     Organ *next;
