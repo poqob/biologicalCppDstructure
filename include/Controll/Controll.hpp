@@ -16,14 +16,16 @@ public:
     int totalSystemCount;
 
 public:
-    Cell *tmpCell;
-    Tissue *tmpTissue;
-    Organ *tmpOrgan;
-    System *tmpSystem;
     Tissue **tissues;
     Organ **organs;
     LinkedSystemList *systems;
     Bst *bst;
+    Cell *tmpCell;
+
+public:
+    Tissue *tmpTissue;
+    Organ *tmpOrgan;
+    System *tmpSystem;
     Organism *organism;
 
 public:
