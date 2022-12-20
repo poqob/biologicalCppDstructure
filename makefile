@@ -5,6 +5,7 @@ all: compile run
 compile:
 	g++ -I ./include/util -o ./lib/Debug.o -c ./src/util/Debug.cpp
 	g++ -I ./include/Bio -o ./lib/Cell.o -c ./src/Bio/Cell.cpp
+	g++ -I ./include/BST -o ./lib/BST.o -c ./src/BST/BST.cpp
 	g++ -I ./include/Bio -o ./lib/Organ.o -c ./src/Bio/Organ.cpp
 	g++ -I ./include/Bio -o ./lib/Organism.o -c ./src/Bio/Organism.cpp
 	g++ -I ./include/Bio -o ./lib/System.o -c ./src/Bio/System.cpp
