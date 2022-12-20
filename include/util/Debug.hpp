@@ -7,12 +7,14 @@ class Debug
 {
 
 public:
-    bool debugMode = 0;
-    void change_debug_status(bool);
-    bool debug_status();
-    void debugPrinter(string, string);
-    void debugPrinter(string, int);
-    void debugPrinter(string, void (*func)());
+    static bool debugMode;
+    static void change_debug_status(bool);
+    static bool debug_status();
+    static void debugPrinter(string, string, bool = 1);
+    static void debugPrinter(string, bool = 1);
+    static void debugPrinter(string, int, bool = 1);
+    static void debugPrinter(string, double, bool = 1);
+    static void debugPrinter(string, void (*func)(), bool = 1);
 };
 
 #endif // DEBUG
