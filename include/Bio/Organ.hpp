@@ -1,13 +1,17 @@
 #if !defined(ORGAN)
 #define ORGAN
 
-#include "../dataStructures/BST/include/BST.hpp"
+#include "../BST/BST.hpp"
 #include "Tissue.hpp"
 class Organ
 {
+
 public:
+    Bst *bst;
+    Organ *next;
+    Organ(Bst *);
+    Organ(Bst *, Organ *);
     Organ();
     ~Organ();
 };
-
 #endif // ORGAN

@@ -52,7 +52,7 @@ void System::add(const Organ &item)
 void System::insert(int index, const Organ &item)
 {
     Organ *prev = FindPrevByPosition(index);
-    prev->next = new Organ(item.root, prev->next);
+    prev->next = new Organ(item.bst, prev->next); // LOOK AFTER
 }
 void System::remove(const Organ &item)
 {
@@ -98,7 +98,7 @@ ostream &operator<<(ostream &screen, System &right)
     {
         for (Organ *itr = right.head->next; itr != NULL; itr = itr->next)
         {
-            screen << itr->root->median << " ";
+            screen << itr->bst->root->median << " ";
         }
     }
     return screen;
