@@ -5,11 +5,14 @@
 class Organ
 {
 public:
+    // fields
     Bst *bst;
     Organ *next;
+    // methods
+    Organ();
     Organ(Bst *);
     Organ(Bst *, Organ *);
-    Organ();
+    void mutation();
     ~Organ();
 };
 #endif // ORGAN

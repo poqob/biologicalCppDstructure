@@ -6,10 +6,13 @@ using namespace std;
 class System
 {
 public:
+    // fields
     System *next;
     Organ **organs;
-    System();
+    // methods
     System(Organ **, System *);
+    System();
+    void mutation();
     ~System();
 };
 

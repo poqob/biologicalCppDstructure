@@ -8,10 +8,12 @@ class Organism
 {
 
 private:
+    // fields
     int systemCount;
     LinkedSystemList *systems;
 
 public:
+    // methods
     Organism(LinkedSystemList *, int);
     Organism();
     void mutation();
