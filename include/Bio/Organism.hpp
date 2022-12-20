@@ -2,31 +2,19 @@
 #define ORGANISM
 
 #include "System.hpp"
+#include "../LinkedSystemList/LinkedSystemList.hpp"
+using namespace std;
 class Organism
 {
+
 private:
-    System *head;
-    System *FindPrevByPosition(int position);
+    int systemCount;
+    LinkedSystemList *systems;
 
 public:
-    Organism(System *);
+    Organism(LinkedSystemList *, int);
     Organism();
-
-private:
-    int capacity;
-    int length;
-    void reserve(int newCapacity);
-    void insert(int i, const System &item);
-
-public:
-    System *items;
-
-public:
     void mutation();
-    bool isEmpty() const;
-    int size() const;
-    void add(const System &item);
-    void clear();
     ~Organism();
 };
 
