@@ -42,11 +42,6 @@ Tissue::Tissue(const Tissue &right)
     capacity = length;
     sort();
 }
-Tissue::~Tissue()
-{
-    if (items != NULL)
-        delete[] items;
-}
 
 int Tissue::size() const
 {
@@ -92,7 +87,7 @@ void Tissue::reserve(int newCapacity)
     capacity = newCapacity;
 }
 
-void Tissue::tissueWriter()
+void Tissue::tissueWriter() // writes tissue's members(cells) dnaLenght field.
 {
     for (int i = 0; i < length; i++)
     {
@@ -100,7 +95,7 @@ void Tissue::tissueWriter()
     }
 }
 
-void Tissue::sort()
+void Tissue::sort() // sort method, that uses radix sorting method.
 {
     if (items != NULL)
     {
@@ -112,11 +107,11 @@ void Tissue::sort()
         capacity = length;
         items = radix->Sort();
         delete radix;
-        calculateMedian();
+        calculateMedian(); // after sorting, that method dedects the median of the cells array.
     }
 }
 
-int Tissue::calculateMedian()
+int Tissue::calculateMedian() // calculates median of cells array.
 {
     median = items[(length / 2)].dnaLenght;
     return median;
@@ -124,9 +119,12 @@ int Tissue::calculateMedian()
 
 void Tissue::mutation()
 {
-    for (int i = 0; i < length; i++)
-    {
+    for (int i = 0; i < length - 1; i++)
         items[i].mutation();
-    }
     sort();
+}
+Tissue::~Tissue()
+{
+    if (items != NULL)
+        delete[] items;
 }

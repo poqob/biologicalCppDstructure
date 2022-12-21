@@ -13,14 +13,11 @@ private:
     void insert(int i, const Cell &item);
 
 public:
-    int length;
-    int median;
-
-public:
     Tissue *right = NULL;
     Tissue *left = NULL;
 
-public:
+    int length;
+    int median;
     Cell *items;
 
 public:
