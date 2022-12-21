@@ -1,5 +1,7 @@
 #if !defined(CONTROLL)
 #define CONTROLL
+#define MAXORGAN 100
+#define MAXTISSUE 20
 
 #include "iostream"
 #include "sstream"
@@ -34,7 +36,7 @@ public:
     void totalSystemCountSetter(int);
     void send(int);
     void nextRow();
-    stringstream showCreature();
+    stringstream showCreature(string character = "#");
     void createTissue();
     void createOrgan();
     void createSystem();

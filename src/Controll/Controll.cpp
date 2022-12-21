@@ -7,8 +7,8 @@ Controll::Controll()
     organ_counter = 0;
     system_counter = 0;
     totalSystemCount = 0;
-    tissues = new Tissue *[20];
-    organs = new Organ *[100];
+    tissues = new Tissue *[MAXTISSUE];
+    organs = new Organ *[MAXORGAN];
     systems = new LinkedSystemList();
 }
 
@@ -33,7 +33,7 @@ void Controll::createTissue()
     cell_counter = 0;
     tmpTissue->sort();
     tissues[tissue_counter - 1] = tmpTissue;
-    if (tissue_counter == 20)
+    if (tissue_counter == MAXTISSUE)
         createOrgan();
 }
 void Controll::createOrgan()
@@ -55,7 +55,7 @@ void Controll::createOrgan()
     organs[organ_counter] = tmpOrgan;
     organ_counter++;
     Debug::debugPrinter("ORGAN COUNTER:  ", organ_counter, false);
-    if (organ_counter == 100)
+    if (organ_counter == MAXORGAN)
         createSystem();
 }
 void Controll::createSystem()
@@ -63,7 +63,7 @@ void Controll::createSystem()
     tmpSystem = new System();
     tmpSystem->organs = organs;
     systems->add(*tmpSystem);
-    organs = new Organ *[100];
+    organs = new Organ *[MAXORGAN];
     organ_counter = 0;
     tissue_counter = 0;
     cell_counter = 0;
@@ -74,19 +74,19 @@ void Controll::createOrganism()
     Debug::debugPrinter("CREATE ORGANISM CALLED", false);
     organism = new Organism(systems);
 }
-stringstream Controll::showCreature()
+stringstream Controll::showCreature(string character)
 {
 
     stringstream stream;
 
     string r;
     System *sysptr = this->systems->head;
-    for (int i = 0; i < 25; i++)
+    for (int i = 0; i < system_counter; i++)
     {
         sysptr = sysptr->next;
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < MAXORGAN; i++)
         {
-            r = sysptr->organs[i]->bst->isTreeBalanced == true ? " " : "#";
+            r = sysptr->organs[i]->bst->isTreeBalanced == true ? " " : character;
             stream << r;
         }
         stream << endl;
@@ -101,7 +101,7 @@ Controll::~Controll()
     Debug::debugPrinter("deletion succesfull.");
 }
 
-void Controll::totalSystemCountSetter(int set)
+void Controll::totalSystemCountSetter(int row)
 {
-    totalSystemCount = set / 2000;
+    totalSystemCount = row / MAXORGAN * MAXTISSUE;
 }
