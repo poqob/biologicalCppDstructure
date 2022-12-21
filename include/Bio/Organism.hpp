@@ -14,7 +14,7 @@ private:
 
 public:
     // methods
-    Organism(LinkedSystemList *, int);
+    Organism(LinkedSystemList *);
     Organism();
     void mutation();
     ~Organism();
