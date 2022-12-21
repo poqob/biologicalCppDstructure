@@ -18,23 +18,16 @@ int main()
     Controll *controller = new Controll();
     ReadFile *rf = new ReadFile(controller);
 
-    string r;
-    System *sysptr = controller->systems->head;
-    for (int i = 0; i < 25; i++)
-    {
-        sysptr = sysptr->next;
-        for (int i = 0; i < 100; i++)
-        {
-            r = sysptr->organs[i]->bst->isTreeBalanced == true ? " " : "#";
-            cout << r;
-        }
-        cout << endl;
-    }
-
-    Debug::debugPrinter("system list size: ", controller->systems->size());
+    controller->showCreature();
+    char a;
+    cin >> a;
+    controller->organism->mutation();
+    controller->showCreature();
 
     timer.stop();
     Debug::debugPrinter("\ntime elapsed: ", timer.elapsedSeconds());
 
+    delete rf;
+    delete controller;
     return 0;
 }
