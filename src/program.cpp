@@ -7,22 +7,23 @@
 #include "../include/Bio/Organ.hpp"
 #include "../include/radixsort/Radix2.hpp"
 #include "../include/fileOperations/ReadFile.hpp"
+#include "../include/UI/UI.hpp"
 
 using namespace std;
 
 int main()
 {
-    Debug::change_debug_status(1); // 1 to debug mode, 0 to non debug mode.
+    Debug::change_debug_status(0); // 1 to debug mode, 0 to non debug mode.
     Timer timer;
+    char s;
+    Ui ui = Ui();
     timer.start();
+
     Controll *controller = new Controll();
     ReadFile *rf = new ReadFile(controller);
-
-    controller->showCreature();
-    char a;
-    cin >> a;
+    ui.draw("ORGANIZMA", controller->showCreature());
     controller->organism->mutation();
-    controller->showCreature();
+    ui.draw("ORGANIZMA (MUTASYONA UGRADI)", controller->showCreature());
 
     timer.stop();
     Debug::debugPrinter("\ntime elapsed: ", timer.elapsedSeconds());
