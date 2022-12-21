@@ -5,7 +5,7 @@
 #include "fstream"
 #include "../Controll/Controll.hpp"
 using namespace std;
-class ReadFile
+class ReadFile_
 {
 private:
     int stopRow;
@@ -15,11 +15,11 @@ private:
 public:
     Controll *controll;
 
-    ReadFile(int, Controll *);
-    ReadFile(Controll *);
+    ReadFile_(int, Controll *);
+    ReadFile_(Controll *);
     void rowIntParser(string row, int firstSpaceLocc, int firstNumLocc);
     int fileRowCounter();
-    ~ReadFile();
+    ~ReadFile_();
 };
 
 #endif // READFILE

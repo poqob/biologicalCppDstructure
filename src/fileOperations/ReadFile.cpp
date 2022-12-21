@@ -1,6 +1,6 @@
 #include "../../include/fileOperations/ReadFile.hpp"
 
-ReadFile::ReadFile(int stopRow, Controll *controller)
+ReadFile_::ReadFile_(int stopRow, Controll *controller)
 {
     // attemting fields start values
     count = 0;
@@ -27,7 +27,7 @@ ReadFile::ReadFile(int stopRow, Controll *controller)
     controll->createOrganism();
 }
 
-ReadFile::ReadFile(Controll *controller)
+ReadFile_::ReadFile_(Controll *controller)
 {
     // attemting fields
     this->stopRow = -1;
@@ -52,7 +52,7 @@ ReadFile::ReadFile(Controll *controller)
 }
 
 // int parsing
-void ReadFile::rowIntParser(string row, int firstSpaceLocc, int firstNumLocc)
+void ReadFile_::rowIntParser(string row, int firstSpaceLocc, int firstNumLocc)
 {
     int firstSpaceLoc = firstSpaceLocc;
     int till = 0;
@@ -85,7 +85,7 @@ void ReadFile::rowIntParser(string row, int firstSpaceLocc, int firstNumLocc)
     }
 }
 
-int ReadFile::fileRowCounter()
+int ReadFile_::fileRowCounter()
 {
     string temp0;
     fstream read;
@@ -98,6 +98,6 @@ int ReadFile::fileRowCounter()
     return totalRowNumber;
 }
 
-ReadFile::~ReadFile()
+ReadFile_::~ReadFile_()
 {
 }
