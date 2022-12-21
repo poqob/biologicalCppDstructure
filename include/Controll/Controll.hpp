@@ -2,6 +2,7 @@
 #define CONTROLL
 
 #include "iostream"
+#include "sstream"
 #include "../util/Debug.hpp"
 #include "../Bio/Organism.hpp"
 #include "../LinkedSystemList/LinkedSystemList.hpp"
@@ -33,7 +34,7 @@ public:
     void totalSystemCountSetter(int);
     void send(int);
     void nextRow();
-    void showCreature();
+    stringstream showCreature();
     void createTissue();
     void createOrgan();
     void createSystem();

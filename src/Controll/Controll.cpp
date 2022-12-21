@@ -74,17 +74,10 @@ void Controll::createOrganism()
     Debug::debugPrinter("CREATE ORGANISM CALLED", false);
     organism = new Organism(systems);
 }
-void Controll::showCreature()
+stringstream Controll::showCreature()
 {
-    // i used try catch the reason for that, i'm testing my code on linux as well.
-    // linux bash use 'clear' instead 'cls'
-    try
-    {
-        system("cls");
-    }
-    catch (const std::exception &e)
-    {
-    }
+
+    stringstream stream;
 
     string r;
     System *sysptr = this->systems->head;
@@ -94,10 +87,11 @@ void Controll::showCreature()
         for (int i = 0; i < 100; i++)
         {
             r = sysptr->organs[i]->bst->isTreeBalanced == true ? " " : "#";
-            cout << r;
+            stream << r;
         }
-        cout << endl;
+        stream << endl;
     }
+    return stream;
 }
 Controll::~Controll()
 {
@@ -105,13 +99,6 @@ Controll::~Controll()
     delete[] tissues; // deletes local array
     delete[] organs;  // deletes local array
     Debug::debugPrinter("deletion succesfull.");
-    try
-    {
-        system("pause");
-    }
-    catch (const std::exception &e)
-    {
-    }
 }
 
 void Controll::totalSystemCountSetter(int set)
