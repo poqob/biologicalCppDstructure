@@ -6,7 +6,7 @@ Organism::Organism(LinkedSystemList *systems)
     this->systemCount = systems->size();
 }
 Organism::Organism() {}
-void Organism::mutation()
+bool Organism::mutation()
 {
     System *sysptr = systems->head;
     for (int i = 0; i < systemCount - 1; i++)
@@ -14,6 +14,7 @@ void Organism::mutation()
         sysptr = sysptr->next;
         sysptr->mutation();
     }
+    return true;
 };
 Organism::~Organism()
 {

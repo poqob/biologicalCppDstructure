@@ -16,7 +16,7 @@ public:
     // methods
     Organism(LinkedSystemList *);
     Organism();
-    void mutation();
+    bool mutation();
     ~Organism();
 };
 
