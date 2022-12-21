@@ -15,4 +15,7 @@ void Organism::mutation()
         sysptr->mutation();
     }
 };
-Organism::~Organism() { delete[] systems; };
+Organism::~Organism()
+{
+    delete systems;
+};

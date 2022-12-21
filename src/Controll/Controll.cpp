@@ -46,7 +46,7 @@ void Controll::createOrgan()
         if (!tissues[i]->isEmpty())
             bst->Add(*tissues[i]);
         else
-            cout << "CREATE ORGAN NULL TISSUE :" << i << endl;
+            Debug::debugPrinter("CREATED NULL", false);
     }
     tissue_counter = 0;
     cell_counter = 0;
@@ -54,7 +54,7 @@ void Controll::createOrgan()
     tmpOrgan->bst = bst;
     organs[organ_counter] = tmpOrgan;
     organ_counter++;
-    // Debug::debugPrinter("ORGAN COUNTER:  ", organ_counter);
+    Debug::debugPrinter("ORGAN COUNTER:  ", organ_counter, false);
     if (organ_counter == 100)
         createSystem();
 }
@@ -76,6 +76,16 @@ void Controll::createOrganism()
 }
 void Controll::showCreature()
 {
+    // i used try catch the reason for that, i'm testing my code on linux as well.
+    // linux bash use 'clear' instead 'cls'
+    try
+    {
+        system("cls");
+    }
+    catch (const std::exception &e)
+    {
+    }
+
     string r;
     System *sysptr = this->systems->head;
     for (int i = 0; i < 25; i++)
@@ -91,21 +101,20 @@ void Controll::showCreature()
 }
 Controll::~Controll()
 {
-    delete tmpTissue;
-    delete tmpOrgan;
-    delete tmpSystem;
-    delete organism;
-
-    delete[] tissues;
-    delete[] organs;
-    delete systems;
-    delete bst;
-    delete tmpCell;
+    delete organism;  // deletes all the organism with all sub classes.
+    delete[] tissues; // deletes local array
+    delete[] organs;  // deletes local array
+    Debug::debugPrinter("deletion succesfull.");
+    try
+    {
+        system("pause");
+    }
+    catch (const std::exception &e)
+    {
+    }
 }
 
 void Controll::totalSystemCountSetter(int set)
 {
     totalSystemCount = set / 2000;
 }
-
-// TODO: we can't access system's organs. check arrays if you wont have any idea turn systems to a propper data structure.<-- i reccomend that.

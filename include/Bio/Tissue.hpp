@@ -33,6 +33,6 @@ public:
     void tissueWriter();
     void sort();
     int calculateMedian();
-    ~Tissue(); // TODO
+    ~Tissue();
 };
 #endif // TISSUE
