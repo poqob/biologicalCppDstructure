@@ -72,11 +72,35 @@ void Controll::createSystem()
 void Controll::createOrganism()
 {
     Debug::debugPrinter("CREATE ORGANISM CALLED", false);
-    organism = new Organism(systems, systems->size());
+    organism = new Organism(systems);
 }
-
+void Controll::showCreature()
+{
+    string r;
+    System *sysptr = this->systems->head;
+    for (int i = 0; i < 25; i++)
+    {
+        sysptr = sysptr->next;
+        for (int i = 0; i < 100; i++)
+        {
+            r = sysptr->organs[i]->bst->isTreeBalanced == true ? " " : "#";
+            cout << r;
+        }
+        cout << endl;
+    }
+}
 Controll::~Controll()
 {
+    delete tmpTissue;
+    delete tmpOrgan;
+    delete tmpSystem;
+    delete organism;
+
+    delete[] tissues;
+    delete[] organs;
+    delete systems;
+    delete bst;
+    delete tmpCell;
 }
 
 void Controll::totalSystemCountSetter(int set)

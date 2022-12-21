@@ -33,6 +33,7 @@ public:
     void totalSystemCountSetter(int);
     void send(int);
     void nextRow();
+    void showCreature();
     void createTissue();
     void createOrgan();
     void createSystem();
