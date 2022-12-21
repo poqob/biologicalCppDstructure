@@ -100,5 +100,4 @@ int ReadFile::fileRowCounter()
 
 ReadFile::~ReadFile()
 {
-    delete controll;
 }

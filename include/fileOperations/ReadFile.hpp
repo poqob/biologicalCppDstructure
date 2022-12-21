@@ -13,11 +13,12 @@ private:
     int totalRowNumber;
 
 public:
+    Controll *controll;
+
     ReadFile(int, Controll *);
     ReadFile(Controll *);
     void rowIntParser(string row, int firstSpaceLocc, int firstNumLocc);
     int fileRowCounter();
-    Controll *controll;
     ~ReadFile();
 };
 
