@@ -55,8 +55,10 @@ void Bst::inorder(Tissue *sub)
     {
 
         inorder(sub->left);
-        cout << sub->calculateMedian() << " ";
+        sub->mutation();
+        // cout << sub->calculateMedian() << " ";
         inorder(sub->right);
+        counter++;
     }
 }
 void Bst::preorder(Tissue *sub)
@@ -74,8 +76,13 @@ void Bst::postorder(Tissue *sub)
     {
         postorder(sub->left);
         postorder(sub->right);
-        cout << sub->calculateMedian() << " ";
-        tissuesAfterMutation[++tissueCounter] = *sub;
+        for (int i = 0; i < counter - 1; i++)
+        {
+            for (int j = 0; j < sub->length - 1; j++)
+            {
+                tissuesAfterMutation[i].add(sub->items[j]);
+            }
+        }
     }
 }
 
@@ -128,7 +135,7 @@ void Bst::Delete(const Tissue &data)
     if (SearchAndDelete(root, data) == false)
         throw "Item not found.";
 }
-void Bst::inorder()
+void Bst::inorderMutate()
 {
     inorder(root);
 }
@@ -136,7 +143,7 @@ void Bst::preorder()
 {
     preorder(root);
 }
-void Bst::postorder()
+void Bst::postorderTreeToArray()
 {
     postorder(root);
 }
@@ -191,6 +198,15 @@ void Bst::mutation()
     // TODO: if mutation will became true...
     if (root->median % 50 == 0)
     {
+        tissuesAfterMutation = new Tissue[20];
+        inorderMutate();        // mutate every Tissue in tree
+        postorderTreeToArray(); // transfer tissues from tree to array
+        Clear();                // clear the tree
+
+        for (int i = 0; i < counter - 1; i++) // add changed-unchanged tissues to clean tree after mutation
+            Add(tissuesAfterMutation[i]);
+        isTreeBalanced = isTreeBalancedF(); // determine new tree's new balance value.
+        delete[] tissuesAfterMutation;      // deleting after mutation tissue keeper arrays.
     }
 }
 

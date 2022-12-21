@@ -4,8 +4,9 @@
 class Bst
 {
 private:
-    int tissueCounter = -1;
+    int tissueCounter = 0;
     Tissue *tissuesAfterMutation;
+    int counter = 0;
 
 public:
     Tissue *root;
@@ -31,9 +32,9 @@ public:
     bool isEmpty() const;
     void Add(const Tissue &newItem);
     void Delete(const Tissue &data);
-    void inorder();
+    void inorderMutate();
     void preorder();
-    void postorder();
+    void postorderTreeToArray();
     void levelorder();
     int Height();
     bool Search(const Tissue &item);
