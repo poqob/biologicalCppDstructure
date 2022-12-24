@@ -1,7 +1,5 @@
 all: compile run
-	
 
-#ornek make file- bir onceki odevden
 compile:
 	g++ -I ./include/util -o ./lib/Timer.o -c ./src/util/Timer.cpp
 	g++ -I ./include/util -o ./lib/Debug.o -c ./src/util/Debug.cpp
