@@ -45,6 +45,15 @@ int *Radix2::QueueCurrentLengths()
 	}
 	return lengths;
 }
+
+int Radix2::power(int e)
+{
+	int result = 1;
+	for (int i = 0; i < e; i++)
+		result *= 10;
+	return result;
+}
+
 Cell *Radix2::Sort()
 {
 	int numberIndex = 0;
@@ -68,7 +77,7 @@ Cell *Radix2::Sort()
 			{
 				int number = queues[index]->peek().dnaLenght;
 				queues[index]->dequeue();
-				int stepValue = (number / (int)pow(10, i)) % 10;
+				int stepValue = (number / power(i)) % 10;
 				queues[stepValue]->enqueue(number);
 			}
 		}
