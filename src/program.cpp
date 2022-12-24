@@ -1,4 +1,3 @@
-#include <iostream>
 #include "../include/util/Timer.hpp"
 #include "../include/util/Debug.hpp"
 #include "../include/fileOperations/ReadFile.hpp"
